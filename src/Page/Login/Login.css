@@ -1,0 +1,42 @@
+.loginPageSections {
+    padding: 150px;
+    background-color: #F0F2F5;
+}
+
+.loginInfo {
+    padding: 80px 0px;
+}
+
+.loginFrom {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+button.loginBtn {
+    padding: 12px 0px;
+    margin: 25px 0px;
+}
+.loginButtom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.css-5xn5lu-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: 1px solid rgb(236 229 229) !important;
+}
+hr.dividerlogin {
+    width: 100%;
+    height: 1px;
+    margin: 25px 0px;
+}
+h2.loginTitle {
+    font-size: 40px;
+    font-weight: 900;
+    color: #0871da;
+}
+
+p.loginDesc {
+    font-size: 25px;
+    font-weight: 500;
+}
