@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Grid, Typography, Box, TextField, MenuItem} from "@mui/material";
+import React, { useEffect, useState } from 'react';
+import { Grid, Typography, Box, TextField, MenuItem } from "@mui/material";
 import axios from "axios";
 import Single from "./Single";
 const bloodGroup = [
@@ -58,61 +58,55 @@ const ListDonors = () => {
     //     })
     // }
 
-    try{
-        useEffect(()=>{
+    try {
+        useEffect(() => {
             let url;
-            if(sendGroup == 0){
+            if (sendGroup == 0) {
                 url = `https://vast-retreat-75200.herokuapp.com/api/query/get-donors`
-                console.log('Url: ',url)
-            }else {
+            } else {
                 url = `https://vast-retreat-75200.herokuapp.com/api/query/get-donors?group=${sendGroup}`
-                console.log('Url: ',url)
             }
-            console.log('URL: ', url)
-            axios.get(url).then(res=>{
+            axios.get(url).then(res => {
                 setDonors(res.data)
             })
         }, [sendGroup])
-    }catch (e) {
-        console.log('Error: ', e)
+    } catch (e) {
     }
-
-    console.log('Donors: ', donors)
-        return (
-            <Grid item sm={9} xs={12} md={9} sx={12}>
-                <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 4, flexDirection: 'column'}}>
-                    <TextField
-                        sx={{width: '50%', mb: 2}}
-                        select
-                        label="রক্তের গ্রুপ নিবর্বাচন করুন"
-                        value={group}
-                        onChange={handleChange}
-                        required={true}
-                    >
-                        {bloodGroup.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    Total: {donors.length}
-                </Box>
-                {
-                    donors.length > 0 ?
-                        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }}>
-                            {
-                                donors?.map((donor) => <Single key={donor._id} donor={donor}></Single>)
-                            }
-                        </Grid>
-                        :
-                        <Box sx={{py: 7, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Not Found This Group: {group}
-                            </Typography>
-                        </Box>
-                }
-            </Grid>
-        );
+    return (
+        <Grid item sm={9} xs={12} md={9} sx={12}>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 4, flexDirection: 'column' }}>
+                <TextField
+                    sx={{ width: '50%', mb: 2 }}
+                    select
+                    label="Select blood group"
+                    value={group}
+                    onChange={handleChange}
+                    required={true}
+                >
+                    {bloodGroup.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                Total: {donors.length}
+            </Box>
+            {
+                donors.length > 0 ?
+                    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12 }}>
+                        {
+                            donors?.map((donor) => <Single key={donor._id} donor={donor}></Single>)
+                        }
+                    </Grid>
+                    :
+                    <Box sx={{ py: 7, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Typography variant="h6" gutterBottom component="div">
+                            Not Found This Blood Group {group}
+                        </Typography>
+                    </Box>
+            }
+        </Grid>
+    );
 };
 
 export default ListDonors;

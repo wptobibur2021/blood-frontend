@@ -1,20 +1,20 @@
 import './Login.css'
-import { Typography, Grid, Container,TextField, FormControl, Box, Button,CircularProgress } from '@mui/material'
-import React, {useContext, useRef} from "react";
-import {useNavigate,} from "react-router-dom"
+import { Typography, Grid, Container, TextField, FormControl, Box, Button, CircularProgress } from '@mui/material'
+import React, { useContext, useRef } from "react";
+import { useNavigate, } from "react-router-dom"
 import useNotification from "../../Hooks/useNotification";
-import {AuthContext} from "../../Context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 import useAPI from "../../Hooks/useAPI";
 export default function Login() {
     const password = useRef(null)
     const email = useRef(null)
     const navigate = useNavigate()
-    const {userLogin} = useAPI()
-    const {isFetching, dispatch} = useContext(AuthContext)
-    const {successNotify} = useNotification()
-    const handleSubmit = (e) =>{
+    const { userLogin } = useAPI()
+    const { isFetching, dispatch } = useContext(AuthContext)
+    const { successNotify } = useNotification()
+    const handleSubmit = (e) => {
         e.preventDefault()
-        const userCredential ={
+        const userCredential = {
             email: email.current.value,
             password: password.current.value
         }
@@ -35,13 +35,12 @@ export default function Login() {
         // successNotify('Login has been Successful')
     }
     return (
-            <Box sx={{backgroundColor: '#f0f2f5'}}>
-                <Container sx={{py:10}}>
-            <Grid container spacing={2} columns={12}>
+        <Box sx={{ backgroundColor: '#f0f2f5' }}>
+            <Container sx={{ py: 10 }}>
+                <Grid container spacing={2} columns={12}>
                     <Grid item md={6} sx={12}>
-                        <div className="loginInfo" style={{textAlign: 'center'}}>
-                            <h2 className="loginTitle">EFD Blood Bank</h2>
-                            {/*<p className="loginDesc">EFD Blood Bank</p>*/}
+                        <div className="loginInfo" style={{ textAlign: 'center' }}>
+                            <h2 className="loginTitle">Blood Bank</h2>
                         </div>
                     </Grid>
                     <Grid item md={6} sx={12}>
@@ -69,15 +68,12 @@ export default function Login() {
                                         inputRef={password}
                                     />
                                 </FormControl>
-                                <Button fullWidth className="loginBtn" type="submit" variant="contained">{isFetching ? <CircularProgress size="25px" sx={{color: "white"}}/> : "Login"}</Button>
+                                <Button fullWidth className="loginBtn" type="submit" variant="contained">{isFetching ? <CircularProgress size="25px" sx={{ color: "white" }} /> : "Login"}</Button>
                             </form>
-                            <div className="loginButtom">
-                                <Typography component="p">Forget Password?</Typography>
-                            </div>
                         </div>
                     </Grid>
-            </Grid>
-                </Container>
-            </Box>
+                </Grid>
+            </Container>
+        </Box>
     )
 }

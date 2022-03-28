@@ -1,60 +1,60 @@
-import React, {useContext} from 'react';
-import {Box, Divider, Grid, List, ListItem, ListItemText, Paper,} from "@mui/material";
-import {Link} from "react-router-dom";
-import {AuthContext} from "../../../Context/AuthContext";
+import React, { useContext } from 'react';
+import { Divider, Grid, List, ListItem, ListItemText, Paper, } from "@mui/material";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Context/AuthContext";
 
 const Sidebar = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     return (
         <Grid item sm={3} xs={12} md={3}>
-            <Paper elevation={1} sx={{p:2}}>
+            <Paper elevation={1} sx={{ p: 2 }}>
                 {
-                    user?.role === 1 ? <AdminMenu/> : <UserMenu/>
+                    user?.role === 1 ? <AdminMenu /> : <UserMenu />
                 }
             </Paper>
         </Grid>
     );
 };
 export default Sidebar;
-const AdminMenu = () =>{
-    return(
+const AdminMenu = () => {
+    return (
         <List button>
-            <Link style={{textDecoration: 'none'}} to="/dashboard/list-donors">
+            <Link style={{ textDecoration: 'none' }} to="/dashboard/list-donors">
                 <ListItem>
-                    <ListItemText  primary="সকল রক্তদাতা" />
+                    <ListItemText primary="All blood donors" />
                 </ListItem>
             </Link>
             <Divider />
-            <Link style={{textDecoration: 'none'}} to="/dashboard/add-volunteer">
+            <Link style={{ textDecoration: 'none' }} to="/dashboard/add-volunteer">
                 <ListItem>
-                    <ListItemText  primary="স্বেচ্ছাসেব সংযুক্ত করুন" />
+                    <ListItemText primary="Attach voluntarily" />
                 </ListItem>
             </Link>
             <Divider />
-            <Link style={{textDecoration: 'none'}} to="/dashboard/add-donor">
+            <Link style={{ textDecoration: 'none' }} to="/dashboard/add-donor">
                 <ListItem>
-                    <ListItemText  primary="রক্তদাতা সংযুক্ত করুন" />
+                    <ListItemText primary="Connect the blood donor" />
                 </ListItem>
             </Link>
         </List>
     )
 }
-const UserMenu = () =>{
-    return(
+const UserMenu = () => {
+    return (
         <List button>
-            <Link style={{textDecoration: 'none'}} to="/dashboard/add-donor">
+            <Link style={{ textDecoration: 'none' }} to="/dashboard/add-donor">
                 <ListItem>
-                    <ListItemText  primary="রক্তদাতা সংযুক্ত করুন" />
+                    <ListItemText primary="Connect the blood donor" />
                 </ListItem>
             </Link>
-            <Link style={{textDecoration: 'none'}} to="/dashboard/list-donors">
+            <Link style={{ textDecoration: 'none' }} to="/dashboard/list-donors">
                 <ListItem>
-                    <ListItemText  primary="সকল রক্তদাতা" />
+                    <ListItemText primary="All blood donors" />
                 </ListItem>
             </Link>
-            <Link style={{textDecoration: 'none'}} to="/dashboard/my-donors-list">
+            <Link style={{ textDecoration: 'none' }} to="/dashboard/my-donors-list">
                 <ListItem>
-                    <ListItemText  primary="আমার রক্তদাতা তালিকা" />
+                    <ListItemText primary="My blood donor list" />
                 </ListItem>
             </Link>
         </List>
