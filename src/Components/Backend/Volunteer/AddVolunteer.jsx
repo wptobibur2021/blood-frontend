@@ -74,7 +74,7 @@ const AddVolunteer = () => {
       newData.photo = fileName;
       try {
         await axios.post(
-          "https://bloodbank-chi.vercel.app/api/photoUpload",
+          "https://apibloodbank.vercel.app/api/photoUpload",
           data
         );
       } catch (e) {
@@ -83,7 +83,7 @@ const AddVolunteer = () => {
     }
     try {
       axios
-        .post("https://bloodbank-chi.vercel.app/api/add-volunteer", newData)
+        .post("https://apibloodbank.vercel.app/api/add-volunteer", newData)
         .then((res) => {
           if (res.data) {
             successNotify("Volunteer add successfully");

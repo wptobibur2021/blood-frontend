@@ -66,7 +66,7 @@ const AddDonors = () => {
     };
     try {
       axios
-        .post("https://bloodbank-chi.vercel.app/api/add-donner", newData)
+        .post("https://apibloodbank.vercel.app/api/add-donner", newData)
         .then((res) => {
           if (res.data) {
             successNotify("Donors add successfully");

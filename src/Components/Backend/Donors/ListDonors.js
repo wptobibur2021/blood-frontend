@@ -61,9 +61,9 @@ const ListDonors = () => {
     useEffect(() => {
       let url;
       if (sendGroup == 0) {
-        url = `https://bloodbank-chi.vercel.app/api/query/get-donors`;
+        url = `https://apibloodbank.vercel.app/api/query/get-donors`;
       } else {
-        url = `https://bloodbank-chi.vercel.app/api/query/get-donors?group=${sendGroup}`;
+        url = `https://apibloodbank.vercel.app/api/query/get-donors?group=${sendGroup}`;
       }
       axios.get(url).then((res) => {
         setDonors(res.data);

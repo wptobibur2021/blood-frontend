@@ -20,7 +20,7 @@ const MyDonorList = () => {
   // GET API DECLARATION BELOW
   try {
     useEffect(() => {
-      const url = `https://bloodbank-chi.vercel.app/api/my-donors-list/${user._id}`;
+      const url = `https://apibloodbank.vercel.app/api/my-donors-list/${user._id}`;
       axios.get(url).then((res) => {
         setDonors(res.data);
       });

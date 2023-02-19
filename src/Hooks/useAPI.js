@@ -5,7 +5,7 @@ const useAPI = () => {
     dispatch({ type: "LOGIN_START" });
     try {
       axios
-        .post("https://bloodbank-chi.vercel.app/api/login", userCredential)
+        .post("https://apibloodbank.vercel.app/api/login", userCredential)
         .then((res) => {
           if (res.data) {
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data });

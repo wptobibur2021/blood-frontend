@@ -6,7 +6,7 @@ import Single from "./Single";
 const Donors = () => {
   const [donors, setDonors] = useState([]);
   useEffect(() => {
-    const url = "https://bloodbank-chi.vercel.app/api/get-donors";
+    const url = "https://apibloodbank.vercel.app/api/get-donors";
     axios.get(url).then((res) => {
       setDonors(res.data);
     });

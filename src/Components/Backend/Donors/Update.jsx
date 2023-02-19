@@ -32,7 +32,7 @@ const Update = ({ open, handleClose, donner }) => {
     };
     try {
       axios
-        .put(`https://bloodbank-chi.vercel.app/api/update-donner`, newData)
+        .put(`https://apibloodbank.vercel.app/api/update-donner`, newData)
         .then((res) => {
           if (res.data) {
             successNotify("Doner update successfully");
