@@ -13,6 +13,7 @@ import {
 import { Cancel } from "@mui/icons-material";
 import axios from "axios";
 import useNotification from "../../../Hooks/useNotification";
+import { APP_URL } from "../../../Hooks/appURL";
 const bloodGroup = [
   {
     value: "A+",
@@ -73,24 +74,19 @@ const AddVolunteer = () => {
       data.append("file", file);
       newData.photo = fileName;
       try {
-        await axios.post(
-          "https://apibloodbank.vercel.app/api/photoUpload",
-          data
-        );
+        await axios.post(APP_URL + "/api/photoUpload", data);
       } catch (e) {
         console.log(e);
       }
     }
     try {
-      axios
-        .post("https://apibloodbank.vercel.app/api/add-volunteer", newData)
-        .then((res) => {
-          if (res.data) {
-            successNotify("Volunteer add successfully");
-            setFile("");
-            e.target.reset();
-          }
-        });
+      axios.post(APP_URL + "/api/add-volunteer", newData).then((res) => {
+        if (res.data) {
+          successNotify("Volunteer add successfully");
+          setFile("");
+          e.target.reset();
+        }
+      });
     } catch (e) {
       console.log("Error", e);
     }

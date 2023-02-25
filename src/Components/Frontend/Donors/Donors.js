@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
 import axios from "axios";
 import Single from "./Single";
+import { APP_URL } from "../../../Hooks/appURL";
 
 const Donors = () => {
   const [donors, setDonors] = useState([]);
   useEffect(() => {
-    const url = "https://apibloodbank.vercel.app/api/get-donors";
+    const url = APP_URL + "/api/get-donors";
     axios.get(url).then((res) => {
       setDonors(res.data);
     });

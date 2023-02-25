@@ -13,6 +13,7 @@ import {
 import { AuthContext } from "../../../Context/AuthContext";
 import axios from "axios";
 import DonnerList from "./DonnerList";
+import { APP_URL } from "../../../Hooks/appURL";
 const MyDonorList = () => {
   const [donors, setDonors] = useState([]);
   const { user } = useContext(AuthContext);
@@ -20,7 +21,7 @@ const MyDonorList = () => {
   // GET API DECLARATION BELOW
   try {
     useEffect(() => {
-      const url = `https://apibloodbank.vercel.app/api/my-donors-list/${user._id}`;
+      const url = APP_URL + `/api/my-donors-list/${user._id}`;
       axios.get(url).then((res) => {
         setDonors(res.data);
       });

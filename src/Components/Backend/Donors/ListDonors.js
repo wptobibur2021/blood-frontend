@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Grid, Typography, Box, TextField, MenuItem } from "@mui/material";
 import axios from "axios";
 import Single from "./Single";
+import { APP_URL } from "../../../Hooks/appURL";
 const bloodGroup = [
   {
     value: 0,
@@ -43,27 +44,13 @@ const ListDonors = () => {
     setGroup(event.target.value);
   };
   const sendGroup = encodeURIComponent(group);
-  // let updateList = []
-  // const deleteDonor = (id) =>{
-  //     console.log('ID: ', id)
-  //     console.log('Ok')
-  //     const url = `http://localhost:8000/api/delete-donor/${id}`
-  //     console.log('Url: ', url)
-  //     axios.delete(url).then(res=>{
-  //         if(res.data){
-  //             updateList = donors.filter((d)=> d !==id)
-  //             setDonors(updateList)
-  //         }
-  //     })
-  // }
-
   try {
     useEffect(() => {
       let url;
       if (sendGroup == 0) {
-        url = `https://apibloodbank.vercel.app/api/query/get-donors`;
+        url = APP_URL + `/api/query/get-donors`;
       } else {
-        url = `https://apibloodbank.vercel.app/api/query/get-donors?group=${sendGroup}`;
+        url = APP_URL + `/api/query/get-donors?group=${sendGroup}`;
       }
       axios.get(url).then((res) => {
         setDonors(res.data);

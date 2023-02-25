@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import useNotification from "../../../Hooks/useNotification";
 import { AuthContext } from "../../../Context/AuthContext";
+import { APP_URL } from "../../../Hooks/appURL";
 const bloodGroup = [
   {
     value: "A+",
@@ -65,14 +66,12 @@ const AddDonors = () => {
       userId: user._id,
     };
     try {
-      axios
-        .post("https://apibloodbank.vercel.app/api/add-donner", newData)
-        .then((res) => {
-          if (res.data) {
-            successNotify("Donors add successfully");
-            e.target.reset();
-          }
-        });
+      axios.post(APP_URL + "/api/add-donner", newData).then((res) => {
+        if (res.data) {
+          successNotify("Donors add successfully");
+          e.target.reset();
+        }
+      });
     } catch (e) {
       console.log(e);
     }

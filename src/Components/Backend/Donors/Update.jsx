@@ -3,6 +3,7 @@ import { Box, Typography, Modal, Button, TextField } from "@mui/material";
 import axios from "axios";
 import useNotification from "../../../Hooks/useNotification";
 import { useNavigate } from "react-router-dom";
+import { APP_URL } from "../../../Hooks/appURL";
 const style = {
   position: "absolute",
   top: "50%",
@@ -31,16 +32,14 @@ const Update = ({ open, handleClose, donner }) => {
       userId: donner._id,
     };
     try {
-      axios
-        .put(`https://apibloodbank.vercel.app/api/update-donner`, newData)
-        .then((res) => {
-          if (res.data) {
-            successNotify("Doner update successfully");
-            e.target.reset();
-            handleClose();
-            navigate("/dashboard/list-donors");
-          }
-        });
+      axios.put(APP_URL + `/api/update-donner`, newData).then((res) => {
+        if (res.data) {
+          successNotify("Doner update successfully");
+          e.target.reset();
+          handleClose();
+          navigate("/dashboard/list-donors");
+        }
+      });
     } catch (e) {
       console.log(e);
     }
